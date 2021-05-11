@@ -22,6 +22,9 @@ function App() {
     setLuminosity(event.currentTarget.value);
   }
 
+  const str = <code>{randomColor}</code>;
+
+  /*
   const str = (
     <code>
       ############################### <br />
@@ -39,9 +42,20 @@ function App() {
       ############################### <br />
     </code>
   );
+  */
 
   return (
-    <>
+    <div
+      style={{
+        position: 'absolute',
+        top: '30%',
+        left: '50%',
+        width: '400px',
+        height: '400px',
+        marginTop: '-200px',
+        marginLeft: '-200px',
+      }}
+    >
       <h1>Random Color Generator</h1>
       <p>Would you like the color to be a certain hue and luminosity?</p>
       <div>
@@ -73,8 +87,16 @@ function App() {
 
       <br />
       <br />
-      <div style={{ backgroundColor: randomColor, width: '300px' }}>{str}</div>
-    </>
+      <div
+        style={{
+          backgroundColor: randomColor,
+          width: '300px',
+          height: '300px',
+        }}
+      >
+        {str}
+      </div>
+    </div>
   );
 }
 
