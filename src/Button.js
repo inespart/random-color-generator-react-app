@@ -1,10 +1,8 @@
 /** @jsxImportSource @emotion/react */
-
 import { css } from '@emotion/react';
 import color from 'randomcolor';
 
-// import { useState } from 'react';
-
+// CSS-in-JS
 const button = css`
   background-color: #b0b0b0;
   border: none;

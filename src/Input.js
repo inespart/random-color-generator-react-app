@@ -1,13 +1,10 @@
-// import color from 'randomcolor';
-// import { useState } from 'react';
-
 export default function Input(props) {
   return (
     <div>
-      <label htmlFor={props.htmlFor}>Enter {props.htmlFor}: </label>
+      <label htmlFor={props.htmlFor}>Enter {props.text}: </label>
       <input
         type={props.type}
-        id={props.hue}
+        id={props.id}
         placeholder={props.placeholder}
         value={props.value}
         onChange={props.onChange}
