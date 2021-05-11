@@ -1,14 +1,31 @@
-import './App.css';
-// import chalk from 'chalk';
-// import color from 'randomcolor';
+/** @jsxImportSource @emotion/react */
+
+import { css } from '@emotion/react';
 import { useState } from 'react';
 import Button from './Button.js';
 import Input from './Input.js';
 
+// import './App.css';
+// import chalk from 'chalk';
+// import color from 'randomcolor';
 // import logo from './logo.svg';
 
+const frame = css`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 600px;
+  margin-top: -300px;
+  margin-left: -250px;
+`;
+
+const center = css`
+  text-align: center;
+`;
+
 function App() {
-  const [randomColor, setRandomColor] = useState('#ffffff');
+  const [randomColor, setRandomColor] = useState('');
   const [hue, setHue] = useState('');
   const [luminosity, setLuminosity] = useState('');
 
@@ -22,7 +39,13 @@ function App() {
     setLuminosity(event.currentTarget.value);
   }
 
-  const str = <code>{randomColor}</code>;
+  const str = <h2 css={center}>{randomColor}</h2>;
+
+  const colorBox = css`
+    background-color: ${randomColor};
+    width: 500px;
+    height: 200px;
+  `;
 
   /*
   const str = (
@@ -45,18 +68,9 @@ function App() {
   */
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        top: '30%',
-        left: '50%',
-        width: '400px',
-        height: '400px',
-        marginTop: '-200px',
-        marginLeft: '-200px',
-      }}
-    >
+    <div css={frame}>
       <h1>Random Color Generator</h1>
+
       <p>Would you like the color to be a certain hue and luminosity?</p>
       <div>
         <Input
@@ -87,15 +101,9 @@ function App() {
 
       <br />
       <br />
-      <div
-        style={{
-          backgroundColor: randomColor,
-          width: '300px',
-          height: '300px',
-        }}
-      >
-        {str}
-      </div>
+      <br />
+      <br />
+      <div css={colorBox}>{str}</div>
     </div>
   );
 }
