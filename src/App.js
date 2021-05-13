@@ -6,13 +6,27 @@ import Input from './Input.js';
 
 // CSS-in-JS
 const frame = css`
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  width: 500px;
-  height: 600px;
-  margin-top: -100px;
-  margin-left: -250px;
+  background: #e9c46a;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lucida Console', Courier, monospace;
+`;
+
+const section = css`
+  background: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const inputArea = css`
+  margin: 10px 0;
 `;
 
 const center = css`
@@ -50,74 +64,76 @@ function App() {
     background-color: ${randomColor};
     width: ${width > 0 && width < 1000 ? width : 400}px;
     height: ${height > 0 && height < 1000 ? height : 300}px;
+    align-self: center;
   `;
 
   return (
     <div css={frame}>
-      <h1>Random Color Generator</h1>
+      <section css={section}>
+        <h1>Random Color Generator</h1>
+        <div>
+          <div css={inputArea}>
+            <Input
+              htmlFor="hue"
+              text="hue"
+              type="text"
+              id="hue"
+              placeholder="green"
+              value={hue}
+              onChange={onChangeHue}
+            />
+          </div>
 
-      <h3>Would you like the color to be a certain hue and luminosity?</h3>
-      <div>
-        <Input
-          htmlFor="hue"
-          text="hue"
-          type="text"
-          id="hue"
-          placeholder="green"
-          value={hue}
-          onChange={onChangeHue}
+          <div css={inputArea}>
+            <Input
+              htmlFor="luminosity"
+              text="luminosity"
+              type="text"
+              id="luminosity"
+              placeholder="light"
+              value={luminosity}
+              onChange={onChangeLuminosity}
+            />
+          </div>
+
+          <div css={inputArea}>
+            <Input
+              htmlFor="width"
+              text="width (in px)"
+              type="number"
+              id="width"
+              placeholder="500px"
+              value={width}
+              onChange={onChangeWidth}
+            />
+          </div>
+
+          <div css={inputArea}>
+            <Input
+              htmlFor="height"
+              text="height (in px)"
+              type="number"
+              id="height"
+              placeholder="500px"
+              value={height}
+              onChange={onChangeHeight}
+            />
+          </div>
+        </div>
+        <br />
+        <br />
+
+        <Button
+          setRandomColor={setRandomColor}
+          luminosity={luminosity}
+          hue={hue}
         />
-      </div>
 
-      <div>
-        <Input
-          htmlFor="luminosity"
-          text="luminosity"
-          type="text"
-          id="luminosity"
-          placeholder="light"
-          value={luminosity}
-          onChange={onChangeLuminosity}
-        />
-      </div>
-      <br />
-
-      <h3>You can also resize the box!</h3>
-      <div>
-        <Input
-          htmlFor="width"
-          text="width (in px)"
-          type="number"
-          id="width"
-          placeholder="500px"
-          value={width}
-          onChange={onChangeWidth}
-        />
-      </div>
-      <div>
-        <Input
-          htmlFor="height"
-          text="height (in px)"
-          type="number"
-          id="height"
-          placeholder="500px"
-          value={height}
-          onChange={onChangeHeight}
-        />
-      </div>
-      <br />
-      <br />
-
-      <Button
-        setRandomColor={setRandomColor}
-        luminosity={luminosity}
-        hue={hue}
-      />
-
-      <br />
-      <br />
-      <br />
-      <div css={colorBox}>{str}</div>
+        <br />
+        <br />
+        <br />
+        <div css={colorBox}>{str}</div>
+      </section>
     </div>
   );
 }
