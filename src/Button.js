@@ -9,7 +9,7 @@ const button = css`
   color: white;
   padding: 15px 32px;
   text-align: center;
-  width: 400px;
+  /* width: 400px; */
   align-self: center;
   /* text-decoration: none; */
   /* display: inline-block; */
@@ -28,7 +28,7 @@ export default function Button(props) {
         )
       }
     >
-      Generate random color
+      Generate Random Color
     </button>
   );
 }
